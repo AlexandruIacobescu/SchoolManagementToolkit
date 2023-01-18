@@ -16,13 +16,10 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
-    private final StudentRepository studentRepository;
 
     @Autowired
-    public StudentController(StudentService studentService,
-                             StudentRepository studentRepository) {
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
-        this.studentRepository = studentRepository;
     }
 
     @GetMapping("/get-all")
@@ -57,8 +54,8 @@ public class StudentController {
     }
 
     @RequestMapping("/find-if-year-of-study-greater-than/{yos}")
-    public ResponseEntity<List<Student>> findStudentsWithYearOfStudyGreaterThan1(@PathVariable("yos") final Integer yos){
-        List<Student> students = studentRepository.findStudentsByYearOfStudyGreaterThan(yos);
+    public ResponseEntity<List<Student>> findStudentsWithYearOfStudyGreaterThan(@PathVariable("yos") final Integer yos){
+        List<Student> students = studentService.findStudentsWithYearOfStudyGreaterThan(yos);
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 }

@@ -36,7 +36,7 @@ public class StudentService {
         return studentRepository.findStudentsByFirstNameAndLastName(fname, lname);
     }
 
-    public List<Student> findStudentsWithYearOfStudyGreaterThan1(Integer yos){
+    public List<Student> findStudentsWithYearOfStudyGreaterThan(Integer yos){
         return studentRepository.findStudentsByYearOfStudyGreaterThan(yos);
     }
 }
